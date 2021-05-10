@@ -10,11 +10,11 @@ export class UsersService {
 
 	constructor(private prisma: PrismaService) {}
 	
-	async findOne(username: string): Promise<User | undefined> {
+	async findOne(email: string): Promise<User | undefined> {
 		
-		const user = await this.prisma.user.findOne({
+		const user = await this.prisma.user.findFirst({
 			where: {
-				username: username
+				email: email
 			}
 		})
 
