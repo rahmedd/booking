@@ -1,13 +1,19 @@
 <template lang="pug">
-	h1 Login
+div
+	DlgLogin(msg='hi')
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import DlgLogin from '@/components/DlgLogin.vue'
 
 @Component({
-  components: {},
+  components: {
+	DlgLogin,
+  },
 })
 
-export default class Home extends Vue {}
+export default class Login extends Vue {
+
+}
 </script>
