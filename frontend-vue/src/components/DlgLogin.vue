@@ -1,30 +1,31 @@
 <style lang="sass" scoped>
-.dlgLogin
+.dialog
 	width: 400px
-	height: auto
-	top: 24vh
-	left: 50%
-	transform: translate(-50%)
 </style>
 
 <template lang="pug">
-.dialog-background.dlgLogin
-	.header
-		span.title Login
-	.dialog-content
-		b-field(label='Email' type='is-danger' message='This email is invalid')
-			b-input(type='email' value='john@' maxlength='30')
+.dialog-background
+	.dialog
+		.header
+			span.title Login
+		.dialog-content
+			validation-observer(v-slot="{login}")
+				form(@submit.prevent="handleSubmit(login)")
+					validation-provider(rules='required',  mode="eager", name='Email', v-slot='{ errors, valid }')
+						b-field(label='Email', :type="{ 'is-danger': errors[0], 'is-success': valid }", :message='errors')
+							b-input(v-model='email' ref='email' name='email')
 
-		b-field(label='Password')
-			b-input(type='password' value='iwantmytreasure' password-reveal='')
-	.footer2
-		.button-row
-			.button-row-left
-				a Sign up
-			.button-row-right
-				b-button Cancel
-				b-button(type='is-primary') Login
-		.problem(v-if="problem") {{problem}}
+					validation-provider(rules='required',  mode="eager", vid='password', name='Password', v-slot='{ errors, valid }')
+						b-field(label='Password', :type="{ 'is-danger': errors[0], 'is-success': valid }", :message='errors')
+							b-input(type='password' v-model='password' name='password')
+		.footer2
+			.button-row
+				.button-row-left
+					a Sign up
+				.button-row-right
+					b-button Cancel
+					b-button(type='is-primary') Login
+			.problem(v-if="problem") {{problem}}
 </template>
 
 <script lang="ts">
@@ -38,7 +39,13 @@ import Dialog from '@/components/Dialog.vue'
 
 export default class DlgLogin extends Dialog
 {
-	name = 'raed'
+	email = ''
+	password = ''
 	problem = ''
+	
+	protected async login(): Promise<void>
+	{
+		console.log('logged in1')
+	}
 }
 </script>

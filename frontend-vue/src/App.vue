@@ -63,25 +63,37 @@
 
 </script>
 
-<style lang="scss">
-// Import Bulma's core
-@import "~bulma/sass/utilities/_all";
+<style lang="sass">
+@import 'styles/vars'
+@import 'styles/base'
+// Import Bulma core
+@import "~bulma/sass/utilities/_all"
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap')
+
+body,#app,*
+	box-sizing: border-box
+
+body, html
+	background-color: $background
+	height: 100%		
+
+#app
+	font-family: Lato
+	
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	color: #2c3e50
 
 
-// #nav {
-// 	padding: 30px;
-
-// 	a {
-// 		font-weight: bold;
-// 		color: #2c3e50;
-
-// 		&.router-link-exact-active {
-// 			color: #42b983;
-// 		}
-// 	}
-// }
+// #nav
+// 	padding: 30px
+// 	a
+// 		font-weight: bold
+// 		color: #2c3e50
+// 		&.router-link-exact-active
+// 			color: #42b983
 
 // Import Bulma and Buefy styles
-@import "~bulma";
-@import "~buefy/src/scss/buefy";
+@import "~bulma"
+@import "~buefy/src/scss/buefy"
 </style>

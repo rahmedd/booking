@@ -3,13 +3,20 @@
 	width: 100%
 	height: 100%
 	position: fixed
-	background-color: white
-	box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 7px 0px
-	border-radius: 6px
+	display: flex
+	align-items: center
+	justify-content: center
+	background: rgba(5, 0, 5, 0.5)
+
+.dialog
 	padding: 20px 30px
-	
+	// box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 7px 0px
+	box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 15%), 0 0px 0 1px rgb(10 10 10 / 5%)
+	border-radius: 6px
+	background: white
+
 .header
-	margin-bottom: 10px
+	margin-bottom: 16px
 
 .dialog-content
 	margin-bottom: 30px
@@ -53,17 +60,17 @@ export default class Dialog extends Vue
 	protected visible = false
 	protected addMode = true
 
-	get actionVerb()
+	get actionVerb(): string
 	{
 		return this.addMode ? "Add" : "Edit"
 	}
 
-	mounted()
+	mounted(): void
 	{
 		this.visible = this.open
 	}
 	
-	Show(show = true, addMode = true)
+	Show(show = true, addMode = true): void
 	{
 		this.visible = show
 	}
