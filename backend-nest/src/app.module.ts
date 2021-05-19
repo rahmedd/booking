@@ -9,10 +9,9 @@ import { CustomRedisStore } from './auth/custom-redis-store.service';
 
 import { PrismaService } from './prisma.service';
 import { UserModule } from './user/user.module';
-import { WebsockModule } from './websock/websock.module';
 
 @Module({
-    imports: [UserModule, WebsockModule],
+    imports: [UserModule],
     controllers: [],
     providers: [
 		PrismaService,
