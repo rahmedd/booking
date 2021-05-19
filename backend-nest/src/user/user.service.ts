@@ -1,14 +1,14 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common'
 import { PrismaService } from '../prisma.service'
 
-import { User } from '@prisma/client'
-
+import { Prisma, User } from '@prisma/client'
+import { CreateUserDTO } from '../DTO/user.dto'
 @Injectable()
 export class UserService 
 {
 	constructor(private prisma: PrismaService) {}
 
-	async register(userReq: User): Promise<User> 
+	async register(userReq: CreateUserDTO): Promise<User> 
 	{
 		try 
 		{
@@ -16,8 +16,6 @@ export class UserService
 			{
 				data: userReq
 			})
-
-			delete user.password // remove password
 
 			return user
 		}

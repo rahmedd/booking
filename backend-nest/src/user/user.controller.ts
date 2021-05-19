@@ -4,7 +4,8 @@ import { SessionGuard } from '../auth/session-guard';
 
 import { UserService } from './user.service'
 
-import { User } from '@prisma/client'
+import { Prisma, User } from '@prisma/client'
+import { CreateUserDTO } from '../DTO/user.dto'
 
 @Controller('api')
 export class UserController
@@ -19,9 +20,10 @@ export class UserController
     }
 
 	@Post('register') // needs to be an unauthorized route
-	async registerUser( @Body() req: User ): Promise<User>
+	async registerUser( @Body() req: CreateUserDTO ): Promise<User>
 	{
 		const user = await this.userService.register(req)
+		delete user.password
 		return user
 	}
 
