@@ -9,9 +9,10 @@ import { CustomRedisStore } from './auth/custom-redis-store.service';
 
 import { PrismaService } from './prisma.service';
 import { UserModule } from './user/user.module';
+import { ApiModule } from './api/api.module'
 
 @Module({
-    imports: [UserModule],
+    imports: [UserModule, ApiModule],
     controllers: [],
     providers: [
 		PrismaService,
