@@ -1,0 +1,8 @@
+-- AlterTable
+ALTER TABLE "Room" ALTER COLUMN "maxCustomer" DROP NOT NULL,
+ALTER COLUMN "allowGuest" SET DEFAULT false;
+
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "password" DROP NOT NULL,
+ALTER COLUMN "role" DROP NOT NULL,
+ALTER COLUMN "orgId" DROP NOT NULL;

@@ -16,10 +16,10 @@ model User {
 	email       String        @unique
 	firstName   String
 	lastName    String
-	password    String        // not required for guest users
-	role        Int           // Admin, employee, customer, guest
-	org			Org           @relation(fields: [orgId], references: [id])
-	orgId       Int
+	password    String?        // not required for guest users
+	role        Int?           // Admin, employee, customer, guest
+	org			Org?           @relation(fields: [orgId], references: [id])
+	orgId       Int?
 	Rooms       Room[]
 }
 
@@ -34,8 +34,8 @@ model Org {
 model Room {
 	id          Int           @id @default(autoincrement())
 	name  	    String
-	maxCustomer Int
-	allowGuest  Boolean
+	maxCustomer Int?
+	allowGuest  Boolean       @default(false)
 	org         Org           @relation(fields: [orgId], references: [id])
 	orgId       Int
 	users       User[]
