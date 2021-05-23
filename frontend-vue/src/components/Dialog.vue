@@ -1,4 +1,6 @@
 <style lang="sass">
+@import '../styles/vars'
+
 .dialog-background
 	width: 100%
 	height: 100%
@@ -9,17 +11,20 @@
 	background: rgba(5, 0, 5, 0.5)
 
 .dialog
-	padding: 20px 30px
 	// box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 7px 0px
 	box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 15%), 0 0px 0 1px rgb(10 10 10 / 5%)
-	border-radius: 6px
+	border-radius: 5px
 	background: white
-
-.header
-	margin-bottom: 16px
+	overflow: hidden
 
 .dialog-content
-	margin-bottom: 30px
+	padding: 20px 30px
+
+.dialog-background .header, form
+	margin-bottom: 16px
+
+.dialog-content .field > .help
+	min-height: 30px
 
 %flexbox-base
 	display: flex
@@ -50,7 +55,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component({
-  components: {},
+	components: {},
 })
 
 export default class Dialog extends Vue 
