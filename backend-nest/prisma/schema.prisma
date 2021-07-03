@@ -20,7 +20,8 @@ model User {
 	role        Int?           // Admin, employee, customer, guest
 	org			Org?           @relation(fields: [orgId], references: [id])
 	orgId       Int?
-	Rooms       Room[]
+	reservs     Reserve?       @relation(fields: [reservId], references: [id])
+	reservId    Int?
 }
 
 model Org {
@@ -35,8 +36,15 @@ model Room {
 	id          Int           @id @default(autoincrement())
 	name  	    String
 	maxCustomer Int?
-	allowGuest  Boolean       @default(false)
+	allowGuest  Boolean?      @default(false)
 	org         Org           @relation(fields: [orgId], references: [id])
 	orgId       Int
-	users       User[]
+}
+
+model Reserve {
+	id          Int           @id @default(autoincrement())
+	start       DateTime
+	end         DateTime
+	customers   Int	
+	user        User[]
 }
