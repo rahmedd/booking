@@ -30,6 +30,7 @@
 <script lang="ts">
 import { Component } from 'vue-property-decorator';
 import axios from 'axios'
+import { Store } from '@/store'
 import Dialog from '@/components/Dialog.vue'
 import ProblemMessage from '@/components/ProblemMessage.vue'
 
@@ -52,21 +53,18 @@ export default class DlgLogin extends Dialog
 			const response = await axios.post(url, {
 				username: this.email.trim(),
 				password: this.password
-			},
-				{withCredentials : true}
-			)
-
-			this.problem = response.message
+			}, {withCredentials : true} )
 
 			this.$buefy.toast.open({
-					message: 'Logged in successfully!',
-					type: 'is-success',
+				message: 'Logged in successfully!',
+				type: 'is-success',
 			})
 
 			this.password = ''
 
 			// role based router push
-			// this.$router.push
+			Store.SetLogin(true)
+			this.$router.push({ name: 'Dashboard' })
 		}
 		catch(ex)
 		{

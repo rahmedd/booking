@@ -1,19 +1,17 @@
 <template lang="pug">
 div
-	DlgLogin(msg='hi')
+	h1 dash
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import DlgLogin from '@/components/DlgLogin.vue'
+import DlgCreate from '@/components/DlgCreate.vue'
 
 @Component({
-	components: {
-		DlgLogin,
-	},
+	components: {},
 })
 
-export default class Login extends Vue 
+export default class Dashboard extends Vue 
 {
 
 }

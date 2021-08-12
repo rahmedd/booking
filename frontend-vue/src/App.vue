@@ -9,12 +9,12 @@
 </template>
 
 <script lang="ts">
-	import { Vue, Component } from 'vue-property-decorator';
-	import { ValidationProvider, ValidationObserver } from 'vee-validate';
-	import { extend, localize } from 'vee-validate';
-	import { alpha_dash, confirmed, email, integer, length, max, max_value, min_value, required, excluded } from 'vee-validate/dist/rules';
+import { Vue, Component } from 'vue-property-decorator';
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
+import { extend, localize } from 'vee-validate';
+import { alpha_dash, confirmed, email, integer, length, max, max_value, min_value, required, excluded } from 'vee-validate/dist/rules';
 
-	localize({
+localize({
 	en: {
 		messages: {
 			required: 'this field is required',
@@ -26,39 +26,39 @@
 			excluded: 'Invalid selection'
 		}
 	}
-	});
+});
 
-	// No message specified.
-	extend('alpha_dash', alpha_dash)
-	extend('email', email)
-	extend('integer', {...integer, message: "Must be whole number"})
-	extend('length', length)
-	extend('max', max)
-	extend('max_value', max_value)
-	extend('min_value', min_value)
-	extend("confirmed", {
-		...confirmed,
-		message: "Passwords don't match"
-	})
-	// Override the default message.
-	extend('required', {
-		...required,
-		message: 'This field is required'
-	})
-	extend('excluded', excluded)
+// No message specified.
+extend('alpha_dash', alpha_dash)
+extend('email', email)
+extend('integer', {...integer, message: "Must be whole number"})
+extend('length', length)
+extend('max', max)
+extend('max_value', max_value)
+extend('min_value', min_value)
+extend("confirmed", {
+	...confirmed,
+	message: "Passwords don't match"
+})
+// Override the default message.
+extend('required', {
+	...required,
+	message: 'This field is required'
+})
+extend('excluded', excluded)
 
-	Vue.component('ValidationProvider', ValidationProvider);
-	Vue.component('ValidationObserver', ValidationObserver);
+Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('ValidationObserver', ValidationObserver);
 
 
 	@Component({
 		components: {},
 		props: {},
 	})
-	export default class MainApp extends Vue 
-	{
+export default class MainApp extends Vue 
+{
 
-	}
+}
 	
 
 </script>
